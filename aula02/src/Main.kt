@@ -1,6 +1,8 @@
+import kotlin.random.Random
+
 fun main() {
     // mensagem(); // Ponto e vírgula não é necessário
-    ex20()
+    ex14()
 }
 
 fun mensagem() {
@@ -9,7 +11,7 @@ fun mensagem() {
 
 fun ex01() {
 
-    // Média das notas
+    // Média de notas
 
     print("Informe a primeira nota: ")
     val n1 = readln().toFloat()
@@ -30,6 +32,21 @@ fun ex01() {
     }
 
     println("Reprovado!")
+}
+
+fun ex02() {
+
+    // Número par ou ímpar
+
+    print("Informe um número inteiro: ")
+    val num = readln().toInt()
+
+    if(num % 2 == 0) {
+        println("O número $num é par!")
+        return
+    }
+
+    println("O número $num é ímpar!")
 }
 
 fun ex03() {
@@ -110,6 +127,89 @@ fun ex07() {
 
 }
 
+fun ex08() {
+
+    // Números primos
+
+    print("Informe um número inteiro: ")
+    val num = readln().toInt()
+    var quantDiv = 0
+
+    for(i in 2..num) {
+        if(num % i == 0) {
+            quantDiv++
+        }
+    }
+
+    if(quantDiv == 1) {
+        println("$num é um número primo")
+        return
+    }
+
+    println("$num não é um número primo")
+}
+
+fun ex09() {
+
+    // Sequência de Fibonacci
+
+    var fib1    = 0
+    var fib2    = 1
+    var fibTemp = 0
+    var i       = 1
+
+    while(i < 11) {
+        fibTemp = fib2
+        fib2 += fib1
+        fib1 = fibTemp
+        println("$fib2")
+        i++
+    }
+}
+
+fun ex10() {
+
+    // Jogo de advinhação
+
+    val num = Random.nextInt(1, 100)
+    var tentativa = 0
+
+    while(tentativa != num) {
+        print("Informe um número: ")
+        tentativa = readln().toInt()
+
+        if(tentativa < num) {
+            println("Número informado é menor do que o correto!")
+        } else {
+            println("Número informado é maior do que o correto!")
+        }
+    }
+
+    println("Correto, o número era $num")
+}
+
+fun ex11() {
+
+    // Número perfeito
+
+    print("Informe um número inteiro: ")
+    val num = readln().toInt()
+    var soma = 0
+
+    for(i in 1..num - 1) {
+        if(num % i == 0) {
+            soma += i
+        }
+    }
+
+    if(soma == num) {
+        println("O número informado é um número perfeito! ")
+        return
+    }
+
+    println("O número informado não é um número perfeito! ")
+}
+
 fun ex12() {
 
     // Conversor de Notas
@@ -130,7 +230,7 @@ fun ex12() {
 
 }
 
-fun ex14() {
+fun ex13() {
 
     // Pedra Papel Tesoura
 
@@ -142,13 +242,39 @@ fun ex14() {
     val resultado = when {
         p1 == p2 -> "Empate!"
         (p1 == "pedra" && p2 == "tesoura") ||
-        (p1 == "tesoura" && p2 == "papel") ||
-        (p1 == "papel" && p2 == "pedra") -> "Player 1 venceu!"
+                (p1 == "tesoura" && p2 == "papel") ||
+                (p1 == "papel" && p2 == "pedra") -> "Player 1 venceu!"
         else -> "Player 2 venceu!"
     }
 
     println("Resultado: $resultado")
 }
+
+fun ex14() {
+
+    // Calculadora simples
+
+    print("Informe o primeiro número inteiro: ")
+    val num1 = readln().toInt()
+
+    print("Informe o segundo número inteiro: ")
+    val num2 = readln().toInt()
+
+    print("Informe a operação que deseja realizar. '+', '-', '*' ou '/': ")
+    val operacao = readln().toString()
+
+    val resultado = when (operacao) {
+        "+" -> num1 + num2
+        "-" -> num1 - num2
+        "*" -> num1 * num2
+        "/" -> num1 / num2
+        else -> "Comando inválido!"
+    }
+
+    print("Resultado: $resultado")
+}
+
+
 
 fun ex20() {
 
